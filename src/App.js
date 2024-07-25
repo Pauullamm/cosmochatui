@@ -1,18 +1,19 @@
 import './App.css';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css'
 import { Route, Routes } from 'react-router-dom';
-import AppSidebar from './components/AppSidebar';
 import HomePage from './pages/HomePage';
 import BarPage from './pages/BarPage';
+import StartPage from './pages/StartPage';
 
 
 function App() {
 
   return (
     <div className="App">
-      <AppSidebar />
+      
       <Routes>
-        <Route path='/' element={<HomePage />}/>
+        <Route path='/start' element={<StartPage />}/>
+        <Route path='/home' element={<HomePage />}/>
         <Route path='/bar' element={<BarPage />}/>
       </Routes>
     </div>

@@ -7,53 +7,15 @@ export default function BarChart() {
     <ResponsiveBar
         data={mockData}
         keys={[
-            'hot dog',
-            'burger',
-            'sandwich',
-            'kebab',
-            'fries',
-            'donut'
+            '# of sessions',
         ]}
-        indexBy="country"
+        indexBy="Date"
         margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
         padding={0.3}
         valueScale={{ type: 'linear' }}
         indexScale={{ type: 'band', round: true }}
         colors={{ scheme: 'nivo' }}
-        defs={[
-            {
-                id: 'dots',
-                type: 'patternDots',
-                background: 'inherit',
-                color: '#38bcb2',
-                size: 4,
-                padding: 1,
-                stagger: true
-            },
-            {
-                id: 'lines',
-                type: 'patternLines',
-                background: 'inherit',
-                color: '#eed312',
-                rotation: -45,
-                lineWidth: 6,
-                spacing: 10
-            }
-        ]}
-        fill={[
-            {
-                match: {
-                    id: 'fries'
-                },
-                id: 'dots'
-            },
-            {
-                match: {
-                    id: 'sandwich'
-                },
-                id: 'lines'
-            }
-        ]}
+        groupMode="grouped"
         borderColor={{
             from: 'color',
             modifiers: [
@@ -69,7 +31,7 @@ export default function BarChart() {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'country',
+            legend: 'Date',
             legendPosition: 'middle',
             legendOffset: 32,
             truncateTickAt: 0
@@ -78,7 +40,7 @@ export default function BarChart() {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'food',
+            legend: 'Count',
             legendPosition: 'middle',
             legendOffset: -40,
             truncateTickAt: 0
@@ -119,7 +81,7 @@ export default function BarChart() {
             }
         ]}
         role="application"
-        ariaLabel="Nivo bar chart demo"
+        ariaLabel="Nivo bar chart"
         barAriaLabel={e=>e.id+": "+e.formattedValue+" in country: "+e.indexValue}
     />
 )

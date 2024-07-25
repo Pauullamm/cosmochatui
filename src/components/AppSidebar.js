@@ -10,10 +10,9 @@ const AppSidebar = () => {
     return (
         <Sidebar>
         <Menu>
-            <div className='sbar'>
-            <MenuItem component={<Link to="/" />}>Chat</MenuItem>
-            <MenuItem component={<Link to="/bar" />}>Stats</MenuItem>
-            </div>
+
+            <MenuItem component={<Link to="/home" />}>Chat</MenuItem>
+            <MenuItem component={<Link to="/bar" />}>Activity</MenuItem>
         </Menu>
         </Sidebar>
     );

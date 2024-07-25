@@ -64,7 +64,6 @@ function HomePage() {
     }).then((data) => {
         return data.json();
     }).then((data) => {
-        console.log(data.choices[0].message.content)
         setMesssages(
         [...chatMessages, {
             message: data.choices[0].message.content,

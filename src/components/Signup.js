@@ -1,6 +1,6 @@
 import { Box, Button, Input, Typography } from "@mui/material";
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Login } from "@mui/icons-material";
 import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -9,7 +9,7 @@ import { doc, setDoc } from "firebase/firestore";
 export default function Signup() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();

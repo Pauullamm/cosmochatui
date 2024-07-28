@@ -2,7 +2,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 
 exports.deleteUserProfile = functions.auth.user().onDelete((user) => {
-    const userId = user.displayName;
+    const userId = user.uid;
     const documentRef = admin.firestore().collection("users").doc(userId);
 
     return documentRef.delete().then(() => {

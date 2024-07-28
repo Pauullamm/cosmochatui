@@ -18,11 +18,13 @@ export default function Signup() {
             // Create a user document in Firestore with initial login count
             const userDocRef = doc(db, "users", userCredential.user.uid);
             await setDoc(userDocRef, {
-                loginCount: 0,
+                loginCount: 1,
+                
             });
 
             console.log("User document created with initial login count");
             console.log("Signed up successfully");
+            navigate("/home")
         } catch (error) {
             console.error("Error signing up:", error);
         }
@@ -34,6 +36,9 @@ export default function Signup() {
 
                     <Typography style={{margin:"20px"}} variant="h3" sx={{mb:3}}>
                         ReX
+                    </Typography>
+                    <Typography style={{margin:"20px"}} variant="h4" sx={{mb:3}}>
+                        Welcome! Please sign up here:
                     </Typography>
                     <Input style={{margin:"10px"}} placeholder="Email" variant="outlined" value={username} onChange={(e) => setUsername(e.target.value)} required sx={{width: "400px"}}/>
                     <Input style={{margin:"10px"}} placeholder="Password" variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)} required sx={{width: "400px"}}/>

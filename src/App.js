@@ -5,9 +5,8 @@ import HomePage from './pages/HomePage';
 import BarPage from './pages/BarPage';
 import StartPage from './pages/StartPage';
 
-
 function App() {
-
+  
   return (
     <div className="App">
 

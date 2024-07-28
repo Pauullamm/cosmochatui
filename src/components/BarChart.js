@@ -1,11 +1,31 @@
 import { ResponsiveBar } from "@nivo/bar";
 import { mockData } from "../data/mockData";
-
+import { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
 export default function BarChart() {
     
+    const [data, setData] = useState(mockData);
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            if (user){
+            const userData = doc(db, "users", user.uid)
+            const userDocSnap = await getDoc(userData);
+            if (userDocSnap.exists()) {
+                const loginCount = userDocSnap.data().loginCount;
+                setData(prevData => prevData.map(item => ({
+                    ...item,
+                    "# of sessions": loginCount
+                })))
+            }}
+        });
+        return () => unsubscribe();
+    }, []);
+
     return (
     <ResponsiveBar
-        data={mockData}
+        data={data}
         keys={[
             '# of sessions',
         ]}
